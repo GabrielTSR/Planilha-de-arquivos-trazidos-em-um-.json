@@ -2,14 +2,13 @@ body {
     background-color: #08090B;
     color: #FFFFFF;
     font-family: sans-serif;
-    width: 100vw;
     font-family: sans-serif;
 }
 
 section {
-    width: 100vw;
     display: flex;
     flex-direction: column;
+    width: 1200px;
     padding: 40px;
     gap: 20px;
     align-items: center;
@@ -168,23 +167,5 @@ button {
 button:hover {
     cursor: pointer;
     background-color: #0000AA;
-    color: white;
-}
-
-#button-alterar {
-    flex: 2;
-}
-
-#button-alterar:hover {
-    background-color: #00AA00;
-    color: white;
-}
-
-#button-fechar {
-    flex: 1;
-}
-
-#button-fechar:hover {
-    background-color: #AA0000;
     color: white;
 }
