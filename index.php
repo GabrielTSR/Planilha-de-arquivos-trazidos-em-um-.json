@@ -32,6 +32,8 @@ if( isset($_GET["first_name"])
             $novoFuncionario->department = $department;
             
             $funcionarios = cadastrarFuncionario("./empresaX.json", $funcionarios, $novoFuncionario);
+
+            header('location:' . dirname($_SERVER['PHP_SELF']));
     }
 
 if(isset($_GET["buscarFuncionario"])){
@@ -47,11 +49,11 @@ if(isset($_GET["buscarFuncionario"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Tabela de funcionários</title>
+    <title>Staff Table</title>
 </head>
 <body>
     <section>
-        <h1>TABELA DE FUNCIONÁRIOS</h1>
+        <h1>STAFF TABLE</h1>
         
         <form>
             <input type="text" name="buscarFuncionario" value="<?=$_GET["buscarFuncionario"] ?? "" ?>" placeholder="Buscar Funcionario">
@@ -92,7 +94,7 @@ if(isset($_GET["buscarFuncionario"])){
 
         <div id="cadastroContainer">
             <form>
-                <h3>Cadastro de Funcionário</h3>
+                <h3>EMPLOYEE REGISTRATION</h3>
                 <div id="formularioQuestoes">
                     <div class="eachQuestion">
                         <label for="firstName">First Name</label>
@@ -110,7 +112,7 @@ if(isset($_GET["buscarFuncionario"])){
                     </div>
                     <div class="eachQuestion">
                         <label for="ipAddress">IP Adress</label>
-                        <input id="ipAddress" name="ip_address" type="text"required>
+                        <input id="ipAddress" name="ip_address" required>
                     </div>
 
                     <div class="eachQuestion">

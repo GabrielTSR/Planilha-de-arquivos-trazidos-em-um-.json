@@ -99,6 +99,14 @@ h3 {
     width: 50%;
 }
 
+#buttonCancelarCadastro {
+    flex: 1;
+}
+
+#buttonCadastrar {
+    flex: 2;
+}
+
 #buttonCancelarCadastro:hover {
     background-color: red;
     color: white;
@@ -116,14 +124,6 @@ h3 {
     justify-content: space-between;
     width: 100%;
     gap: 20px;
-}
-
-.aprovado {
-    background-color: #00AA00;
-}
-
-.reprovado {
-    background-color: #AA0000;
 }
 
 table {

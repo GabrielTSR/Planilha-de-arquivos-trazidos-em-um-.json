@@ -23,11 +23,12 @@ function buscarFuncionario($funcionarios, $nome){
             $funcionariosFiltro[] = $funcionario;
         } else {
 
-            if (mb_strpos(strtoupper($funcionario->id),  strtoupper($nome)) !== false 
+            if (mb_strpos(strtoupper($funcionario->id),  strtoupper($nome)) !== false
             || mb_strpos(strtoupper($funcionario->first_name),  strtoupper($nome)) !== false
             || mb_strpos(strtoupper($funcionario->last_name),  strtoupper($nome)) !== false
+            || mb_strpos(strtoupper($funcionario->first_name . " " . $funcionario->last_name),  strtoupper($nome)) !== false
             || mb_strpos(strtoupper($funcionario->email),  strtoupper($nome)) !== false
-            || mb_strpos(strtoupper($funcionario->gender),  strtoupper($nome)) !== false
+            || strtoupper($funcionario->gender) ===  strtoupper($nome)
             || mb_strpos(strtoupper($funcionario->ip_address),  strtoupper($nome)) !== false
             || mb_strpos(strtoupper($funcionario->country),  strtoupper($nome)) !== false
             || mb_strpos(strtoupper($funcionario->department),  strtoupper($nome)) !== false){
