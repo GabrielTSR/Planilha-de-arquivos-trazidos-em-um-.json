@@ -62,9 +62,7 @@ function cadastrarFuncionario($nomeArquivo, $funcionarios, $novoFuncionario){
     if($criandoObjetosRepetidos == false) {
 
         $funcionarios[] = $novoFuncionario;
-
         $funcionariosJason = json_encode($funcionarios);
-        
         file_put_contents($nomeArquivo, $funcionariosJason);
     }
     return $funcionarios;
