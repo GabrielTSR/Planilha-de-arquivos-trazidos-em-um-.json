@@ -3,6 +3,9 @@ body {
     color: #FFFFFF;
     font-family: sans-serif;
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 section {
@@ -49,7 +52,7 @@ section>form {
 }
 
 #cadastroContainer form {
-    background-color: white;
+    background-color: #dedede;
     height: 400px;
     width: 550px;
     display: flex;
