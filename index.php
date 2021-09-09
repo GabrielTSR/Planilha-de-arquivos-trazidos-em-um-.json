@@ -54,6 +54,7 @@ if(isset($_GET["buscarFuncionario"])){
 <body>
     <section>
         <h1>STAFF TABLE</h1>
+        <h2>Employees found: <?=count($funcionarios)?>.</h2>
         
         <form>
             <input type="text" name="buscarFuncionario" value="<?=$_GET["buscarFuncionario"] ?? "" ?>" placeholder="Buscar Funcionario">
