@@ -2,8 +2,25 @@
 
 require("./funcoes.php");
 
-
 $funcionarios = lerArquivo("./empresaX.json");
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Staff Table</title>
+</head>
+<body>
+    <section>
+        <h1>STAFF TABLE</h1>
+        <h2>Total employees: <?=count($funcionarios)?>.</h2>
+
+<?php
 
 if( isset($_GET["first_name"])
         && isset($_GET["last_name"])
@@ -40,20 +57,6 @@ if(isset($_GET["buscarFuncionario"])){
     $funcionarios = buscarFuncionario($funcionarios, $_GET["buscarFuncionario"]);
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Staff Table</title>
-</head>
-<body>
-    <section>
-        <h1>STAFF TABLE</h1>
         <h2>Employees found: <?=count($funcionarios)?>.</h2>
         
         <form>
