@@ -18,7 +18,9 @@ $funcionarios = lerArquivo("./empresaX.json");
 <body>
     <section>
         <h1>STAFF TABLE</h1>
-        <h2>Total employees: <?=count($funcionarios)?>.</h2>
+
+        <div id="employeesNumber">
+            <h2>Total employees: <?=count($funcionarios)?>.</h2>
 
 <?php
 
@@ -57,8 +59,9 @@ if(isset($_GET["buscarFuncionario"])){
     $funcionarios = buscarFuncionario($funcionarios, $_GET["buscarFuncionario"]);
 }
 ?>
-        <h2>Employees found: <?=count($funcionarios)?>.</h2>
-        
+            <h2>Employees found: <?=count($funcionarios)?>.</h2>
+        </div>
+
         <form>
             <input type="text" name="buscarFuncionario" value="<?=$_GET["buscarFuncionario"] ?? "" ?>" placeholder="Buscar Funcionario">
             <button>BUSCAR</button>
