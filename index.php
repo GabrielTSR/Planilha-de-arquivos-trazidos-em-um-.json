@@ -42,7 +42,13 @@ if( isset($_GET["first_name"])
             $gender = $_GET["gender"];
 
             $novoFuncionario = new stdClass;
-            $novoFuncionario->id = count($funcionarios)+1;
+
+            $novoFuncionario->id = 1;
+                foreach($funcionarios as $funcionario) {
+                    if($funcionario->id === $novoFuncionario->id){
+                        $novoFuncionario->id++;
+                    }
+                }
             $novoFuncionario->first_name = $first_name;
             $novoFuncionario->last_name = $last_name;
             $novoFuncionario->email = $email;

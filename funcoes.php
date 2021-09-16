@@ -46,13 +46,7 @@ function cadastrarFuncionario($nomeArquivo, $funcionarios, $novoFuncionario){
     $criandoObjetosRepetidos = false;
 
     foreach($funcionarios as $funcionario) {
-        if ($funcionario -> first_name == $novoFuncionario -> first_name
-            && $funcionario -> last_name == $novoFuncionario -> last_name
-            && $funcionario -> email == $novoFuncionario -> email
-            && $funcionario -> gender == $novoFuncionario -> gender
-            && $funcionario -> ip_address == $novoFuncionario -> ip_address
-            && $funcionario -> country == $novoFuncionario -> country
-            && $funcionario -> department == $novoFuncionario -> department) {
+        if ($funcionario == $novoFuncionario) {
 
             $criandoObjetosRepetidos = true;
 
