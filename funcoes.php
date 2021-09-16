@@ -67,3 +67,34 @@ function cadastrarFuncionario($nomeArquivo, $funcionarios, $novoFuncionario){
     }
     return $funcionarios;
 }
+
+function deletarFuncionario ($nomeArquivo, $idFuncionario){
+    $funcionarios = lerArquivo($nomeArquivo);
+
+    foreach($funcionarios as $chave => $funcionario){
+        if($funcionario->id == $idFuncionario){
+            unset($funcionarios[$chave]);
+        }
+    }
+
+    $json = json_encode(array_values($funcionarios));
+
+    file_put_contents($nomeArquivo, $json);
+
+
+
+}
+
+function editEmployee($nomeArquivo, $editedEmployee) {
+    $funcionarios = lerArquivo($nomeArquivo);
+
+    foreach($funcionarios as $chave => $funcionario){
+        if($funcionario->id == $editedEmployee->id){
+            $funcionarios[$chave] = $editedEmployee;
+        }
+    }
+
+    $json = json_encode(array_values($funcionarios));
+
+    file_put_contents($nomeArquivo, $json);
+}

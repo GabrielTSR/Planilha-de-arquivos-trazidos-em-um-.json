@@ -11,6 +11,7 @@ $funcionarios = lerArquivo("./empresaX.json");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0ceead7302.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <title>Staff Table</title>
@@ -64,7 +65,7 @@ if(isset($_GET["buscarFuncionario"])){
 
         <form>
             <input type="text" name="buscarFuncionario" value="<?=$_GET["buscarFuncionario"] ?? "" ?>" placeholder="Buscar Funcionario">
-            <button>BUSCAR</button>
+            <button>SEARCH</button>
             <button id="buttonCriarConta" type="button">CADASTRAR</button>
     </form>
     <table border="1">
@@ -77,6 +78,7 @@ if(isset($_GET["buscarFuncionario"])){
             <th>IP Address</th>
             <th>Country</th>
             <th>Department</th>
+            <th>Actions</th>
         </tr>
         <?php
 
@@ -91,6 +93,24 @@ if(isset($_GET["buscarFuncionario"])){
             <td><?=$funcionario->ip_address?></td>
             <td><?=$funcionario->country?></td>
             <td><?=$funcionario->department?></td>
+            <td>
+                <button type="button" onclick="deletar(<?=$funcionario->id?>)" id="deleteUser" ><i class="fas fa-trash-alt"></i></button>
+                
+                <?php
+                //inserindo os elementos do objeto em uma lista.
+                $employeeList[] = $funcionario;
+                ?>
+                <button type="button" onclick="openEditModal(
+                <?=$funcionario->id?>,
+                 '<?=$funcionario->first_name?>',
+                    '<?=$funcionario->last_name?>', 
+                        '<?=$funcionario->email?>',
+                            '<?=$funcionario->ip_address?>',
+                                '<?=$funcionario->country?>',
+                                    '<?=$funcionario->department?>',
+                                        '<?=$funcionario->gender?>'
+                 )" id="editUser"><i class="fas fa-edit"></i></button>
+            </td>
         </tr>
         <?php
     endforeach;
@@ -99,7 +119,7 @@ if(isset($_GET["buscarFuncionario"])){
     
     </table>
 
-        <div id="cadastroContainer">
+        <div class='modal' id="cadastroContainer">
             <form>
                 <h3>EMPLOYEE REGISTRATION</h3>
                 <div id="formularioQuestoes">
@@ -141,9 +161,78 @@ if(isset($_GET["buscarFuncionario"])){
                 </div>
                 <div class="buttonContainer">
                     <button type="button" id="buttonCancelarCadastro">CANCELAR</button>
-                    <button id="buttonCadastrar">CADASTRAR</button>
+                    <button id="buttonCadastrar">REGISTER</button>
                 </div>
             </form>
+        </div>
+
+        <div class='modal' id="editContainer">
+            <form action="acaoEditar.php" method="POST">
+                <h3>EDIT USER INFORMATION</h3>
+                <div id="formularioQuestoes">
+
+                        <input id="idEmployee" name="idEmployee" type="hidden">
+
+                    <div class="eachQuestion">
+                        <label for="editFirstName">First Name</label>
+                        <input id="editFirstName" name="first_name" type="text" required>
+                    </div>
+
+                    <div class="eachQuestion">
+                        <label for="editLastName">Last Name</label>
+                        <input id="editLastName" name="last_name" type="text"required>
+                    </div>
+
+                    <div class="eachQuestion">
+                        <label for="editEmail">E-mail</label>
+                        <input id="editEmail" name="email" type="text"required>
+                    </div>
+                    <div class="eachQuestion">
+                        <label for="editIpAddress">IP Adress</label>
+                        <input id="editIpAddress" name="ip_address" required>
+                    </div>
+
+                    <div class="eachQuestion">
+                        <label for="editCountry">Country</label>
+                        <input id="editCountry" name="country" type="text"required>
+                    </div>
+
+                    <div class="eachQuestion">
+                        <label for="editDepartment">Department</label>
+                        <input id="editDepartment" name="department" type="text"required>
+                    </div>
+                    <div class="eachQuestion">
+                        <label for="editGender">Gender</label>
+                        <select name="gender" id="editGender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="buttonContainer">
+                    <button style="flex: 1;" type="button" onclick="closeEditModal()" type="button">CANCELAR</button>
+                    <button style="flex: 2;">CADASTRAR</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class='modal' id="deleteContainer">
+            <div id="askContainer">
+                <h3>ARE YOU SURE THAT YOU WANT TO DELETE IT?</h3>
+                <div class="buttonContainer">
+                    <button class='green'>YES</button>
+                    <button id="dontDelete" class='red'>NO</button>
+                </div>
+            </div>
         </div>
     </section>
 </body>
