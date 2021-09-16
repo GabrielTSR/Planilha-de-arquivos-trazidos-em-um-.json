@@ -66,7 +66,7 @@ if(isset($_GET["buscarFuncionario"])){
         <form>
             <input type="text" name="buscarFuncionario" value="<?=$_GET["buscarFuncionario"] ?? "" ?>" placeholder="Buscar Funcionario">
             <button>SEARCH</button>
-            <button id="buttonCriarConta" type="button">CADASTRAR</button>
+            <button id="buttonCriarConta" type="button">REGISTER</button>
     </form>
     <table border="1">
         <tr>
@@ -210,8 +210,8 @@ if(isset($_GET["buscarFuncionario"])){
                     </div>
                 </div>
                 <div class="buttonContainer">
-                    <button style="flex: 1;" type="button" onclick="closeEditModal()" type="button">CANCELAR</button>
-                    <button style="flex: 2;">CADASTRAR</button>
+                    <button style="flex: 1;" type="button" onclick="closeEditModal()" type="button">CANCEL</button>
+                    <button style="flex: 2;">REGISTER</button>
                 </div>
             </form>
         </div>
